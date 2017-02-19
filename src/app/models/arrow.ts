@@ -41,11 +41,11 @@ export class Arrow {
     }
 
     isSameX(): boolean {
-        return this.getAbsWidth() < this.lineWidth;
+        return this.getAbsWidth() < this.lineWidth*3;
     }
 
     isSameY(): boolean {
-        return this.getAbsHeigth() < this.lineWidth;
+        return this.getAbsHeigth() < this.lineWidth*3;
     }
 
     isUp(): boolean {
