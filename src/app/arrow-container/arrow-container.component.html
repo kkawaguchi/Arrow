@@ -1,0 +1,24 @@
+<p>
+  arrow-container works!
+</p>
+
+<div>
+  <input type="number" [value]="startPointx" [(ngModel)]="startPointx" (ngModelChange)="createCArrow()">
+  <input type="number" [value]="startPointy" [(ngModel)]="startPointy" (ngModelChange)="createCArrow()">
+  <input type="number" [value]="endPointx" [(ngModel)]="endPointx" (ngModelChange)="createCArrow()">
+  <input type="number" [value]="endPointy" [(ngModel)]="endPointy" (ngModelChange)="createCArrow()">
+  <input type="number" [value]="lineWidth" [(ngModel)]="lineWidth" (ngModelChange)="createCArrow()">
+  <input type="color" [value]="color" [(ngModel)]="color" (ngModelChange)="createCArrow()">
+</div>
+
+<div style="height:300px">
+<app-arrow [arrow]="cArrow"></app-arrow>
+</div>
+
+
+<div *ngFor="let arrow of arrows">
+  <app-arrow [arrow]="arrow"></app-arrow>
+</div>
+
+<div style="height:300px">
+</div>

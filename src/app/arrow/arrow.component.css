@@ -1,0 +1,21 @@
+:host {
+    position: absolute;
+}
+
+.top, .bottom {
+    border-style: solid;
+    border-width: 0;
+    box-sizing: border-box;
+}
+
+.arrow-head{
+  position: absolute;
+  border-style:solid;
+  width: 0;
+  height: 0;
+}
+
+.arrow {
+  position: absolute;
+}
+  
