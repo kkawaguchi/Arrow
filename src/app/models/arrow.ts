@@ -81,7 +81,7 @@ export class Arrow {
         if (this.isSameX()) {
             x = this.endPoint.x - (this.arrowHeadWidth / 2 + this.lineWidth / 2);
         } else if (this.isRight()) {
-            x = this.endPoint.x - (this.arrowHeadWidth/ 2 + this.lineWidth*1.5)
+            x = this.endPoint.x - (this.arrowHeadWidth/ 2 + this.lineWidth*0.5);
         } else {
             x = this.endPoint.x - (this.arrowHeadWidth / 2 + this.lineWidth / 2);
         }
