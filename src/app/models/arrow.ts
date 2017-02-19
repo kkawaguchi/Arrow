@@ -14,6 +14,14 @@ export class Arrow {
         this.arrowHeadWidth = this.lineWidth * 2;
         this.color = color;
 
+        if(this.isSameX()){
+            this.endPoint.x = this.startPoint.x;
+        }
+
+        if(this.isSameY()){
+            this.endPoint.y = this.startPoint.y;
+        }
+
     }
 
     getHeigth(): number {
@@ -41,15 +49,15 @@ export class Arrow {
     }
 
     isUp(): boolean {
-        return !this.isSameX() && this.getHeigth() < 0;
+        return !this.isSameY() && this.getHeigth() < 0;
     }
 
     isDown(): boolean {
-        return !this.isSameX() && this.getHeigth() > 0;
+        return !this.isSameY() && this.getHeigth() > 0;
     }
 
     isRight(): boolean {
-        return !this.isSameY() && this.getWidth() > 0;
+        return !this.isSameX() && this.getWidth() > 0;
     }
 
     isLeft(): boolean {
@@ -65,23 +73,23 @@ export class Arrow {
         if (this.isSameY()) {
             y = this.endPoint.y - (this.arrowHeadWidth - this.lineWidth / 2);
         } else if (this.isUp()) {
-            y = this.endPoint.y - (this.arrowHeadWidth * 1.5 + this.lineWidth)
+            y = this.endPoint.y - (this.arrowHeadWidth * 1.5 - this.lineWidth)
         } else {
-            y = this.endPoint.y;
+            y = this.endPoint.y - this.lineWidth*2;
         }
 
         if (this.isSameX()) {
             x = this.endPoint.x - (this.arrowHeadWidth / 2 + this.lineWidth / 2);
         } else if (this.isRight()) {
-            x = this.endPoint.x - (this.arrowHeadWidth + this.lineWidth / 2)
+            x = this.endPoint.x - (this.arrowHeadWidth/ 2 + this.lineWidth*1.5)
         } else {
             x = this.endPoint.x - (this.arrowHeadWidth / 2 + this.lineWidth / 2);
         }
 
         if (arrowDirection == ArrowDirection.LEFT) {
-            return new Point(this.endPoint.x - (this.arrowHeadWidth * 2), y);
+            return new Point(this.endPoint.x - (this.arrowHeadWidth * 2), this.endPoint.y - (this.arrowHeadWidth - this.lineWidth*2.5));
         } else if (arrowDirection == ArrowDirection.RIGHT) {
-            return new Point(this.endPoint.x, y);
+            return new Point(this.endPoint.x, this.endPoint.y - (this.arrowHeadWidth- this.lineWidth*2.5));
         } else {
             return new Point(x, y);
         }

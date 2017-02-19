@@ -25,17 +25,30 @@ export class ArrowComponent implements OnChanges {
 
     setArrowPosition(arrow: Arrow) {
         // 左上位置を設定
-        this.arrowStyle['top.px'] = arrow.startPoint.y < arrow.endPoint.y ? arrow.startPoint.y : arrow.endPoint.y;
+        this.arrowStyle['top.px'] = arrow.startPoint.y < arrow.endPoint.y ? arrow.startPoint.y : arrow.endPoint.y + arrow.lineWidth*2;
         this.arrowStyle['left.px'] = arrow.startPoint.x < arrow.endPoint.x ? arrow.startPoint.x : arrow.endPoint.x;
 
         // 上段部の高さ・幅を設定
         this.arrowTopStyle['width.px'] = arrow.getAbsWidth();
-        this.arrowTopStyle['height.px'] = arrow.getAbsHeigth() / 2 - arrow.lineWidth / 2;
-
+        if(arrow.isSameY()){
+            this.arrowTopStyle['height.px'] = 0;
+        }
+        else if (arrow.isDown()) {
+            this.arrowTopStyle['height.px'] = arrow.getAbsHeigth() / 2 - arrow.lineWidth / 2;
+        }else{
+            this.arrowTopStyle['height.px'] = arrow.getAbsHeigth() / 2 - arrow.lineWidth / 2 - arrow.lineWidth*2;
+        }
         // 下段部の高さ・幅を設定
         this.arrowBottomStyle['width.px'] = arrow.getAbsWidth();
-        this.arrowBottomStyle['height.px'] = arrow.getAbsHeigth() / 2 + arrow.lineWidth / 2;
-
+        if(arrow.isSameY()){
+            this.arrowBottomStyle['height.px'] = 0;
+        }
+        else
+        if (arrow.isDown()) {
+            this.arrowBottomStyle['height.px'] = arrow.getAbsHeigth() / 2 + arrow.lineWidth / 2 - arrow.lineWidth*2;
+        }else{
+            this.arrowBottomStyle['height.px'] = arrow.getAbsHeigth() / 2 + arrow.lineWidth / 2 ;
+        }
         // 矢印部の位置を設定
         let arrowHeadTopLeftPoint = arrow.getArrowHeadTopLeftPoint();
         this.arrowHeadStyle['top.px'] = arrowHeadTopLeftPoint.y;
